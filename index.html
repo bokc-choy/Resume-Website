@@ -4,6 +4,10 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Amarante&display=swap" rel="stylesheet">
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Neonderthaw&display=swap" rel="stylesheet">
+
   <title>Spencer Choy</title>
   <style>
     body {
@@ -12,14 +16,17 @@
       background-size: cover;
       background-position: center;
       color: black;      
-
+      -webkit-transition: background .3s;
+      -moz-transition: color .3s;
     }
     h1 {
       font-size: 50px;
-      margin: -60px 0 20px 0;
+      margin: -60px 0 0px 0;
       font-family: "Amarante", serif;
-
     }
+    h2{
+        margin: -10 0 30px 0;
+      }
     img {
       margin:  -100 0 -200 0;
       max-width: 400px;
@@ -37,21 +44,71 @@
       border-radius: 30px;
       background-color: rgba(237, 232, 220, 1);
       transition: background-color 0.3s;
+      transition: padding 0.3s;
       /*border: solid 10px*/
     }
     
     a {
+        display: inline-block;
         text-decoration: none;
         color: black;
-
     }
     
     li:hover{
-      background-color: rgba(255, 255, 255, 1)
+      background-color: rgba(255, 255, 255, 1);
+      padding: 15px 25px 15px 25px;
     }
     
     div{
       margin: 10;
+    }
+    
+    .hidden{
+      margin: -100 0 50 0;
+      opacity: 0;
+      z-index: -1;
+      color: #fff;
+      font-family: Neonderthaw;
+      font-size: 100px;
+      font-weight: 700;
+      text-shadow: -1px 1px 2px rgba(135, 24, 157, 1),
+      1px 1px 2px rgba(135, 24, 157, 1),
+      1px -1px 0 rgba(135, 24, 157, 1),
+      -1px -1px 0 rgba(135, 24, 157, 1),
+      0px 0px 15px rgba(135, 24, 157, 1);
+      transition: opacity 0.3s;
+    }
+    
+    .hidden.reveal{
+      opacity: 1;
+    }
+    
+    .mystery-toggle{
+      text-align: center;
+      background: rgba(60, 60, 60, 1);
+      background-size: cover;
+      background-position: center;
+      color: #dfdfdf;
+    }
+    
+    .mystery-toggle li{
+      background-color: #bbbbbb;
+      transition: background-color 0.3s;
+      transition: padding 0.3s;
+      color: black;
+      /*border: solid 10px*/
+    }
+    
+    .mystery-toggle h1 {
+      opacity: 0.1;
+    }
+    
+    .mystery-toggle h2 {
+      opacity: 0;
+    }
+    
+    .mystery-toggle img{
+      padding: 110 10 300 10
     }
   
     @media (max-width: 500px){
@@ -63,6 +120,11 @@
         font-size: 24px;
         margin: 0 0 -50px 0;
       }
+      
+      h2{
+        margin: 60 0 -30px 0;
+      }
+      
       ul{
         padding: 30 0 0 0;
       }
@@ -71,30 +133,49 @@
         padding: 20 50 20 50;
         margin: 20
       }
-      
+      li:hover{
+        padding: 25px 55px 25px 55px;
+      }
     }
+  
   </style>
 </head>
 
 <body>
-
   <img src="https://cdn.discordapp.com/attachments/1135920642588414014/1407452371201822820/IMG_3624.png?ex=68a627aa&is=68a4d62a&hm=0009ac17a2d412faf72253d73676902dc961032716103490a30deb0a03322840&">
+  <!--<img src="https://cdn.discordapp.com/attachments/1407475718652301322/1407570402942783499/duckdance.gif?ex=68a69597&is=68a54417&hm=814c5b8df70782bbd83bef368da55d371a4ff72684e3944d8908591c410a996f&">-->
   <h1>Hi! I'm Spencer, an aspiring software developer</h1>
+  <div class="hidden">Spencer Choy</div>
+  <h2>check all the buttons!</h2>
   <ul>
     <li>
-      <a href="https://www.linkedin.com/in/spencer-choy/" target="_blank" rel="noopener noreferrer">Linkedin
+      <a href="https://www.linkedin.com/in/spencer-choy/" target="_blank" rel="noopener noreferrer">Linkedin</a>
     </li>
+    
     <li>
-      <a href="https://www.github.com/bokc-choy" target="_blank" rel="noopener noreferrer">Github
+      <a href="https://www.github.com/bokc-choy" target="_blank" rel="noopener noreferrer">Github</a>
     </li>
-    <li>
-      <a href="https://www.tacospin.com/" target="_blank" rel="noopener noreferrer">Mystery
+    
+    <li id="mystery">
+      mystery?
       </li>
   </ul>
 
 
 <script>
-  
+toggle = false;
+  $("li[id='mystery']").on("click", function() {
+      $('body').toggleClass('mystery-toggle');
+      $("div").toggleClass("reveal");
+      if(!toggle){
+        $("img").attr("src", "https://cdn.discordapp.com/attachments/1407475718652301322/1407570402942783499/duckdance.gif?ex=68a69597&is=68a54417&hm=814c5b8df70782bbd83bef368da55d371a4ff72684e3944d8908591c410a996f&")
+        toggle = true;
+      }
+      else{
+        $("img").attr("src", "https://cdn.discordapp.com/attachments/1135920642588414014/1407452371201822820/IMG_3624.png?ex=68a627aa&is=68a4d62a&hm=0009ac17a2d412faf72253d73676902dc961032716103490a30deb0a03322840&")
+        toggle = false;
+      }
+    });
 </script>
 
 </body>
